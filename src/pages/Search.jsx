@@ -6,7 +6,7 @@ function Search() {
     "https://www.googleapis.com/books/v1/volumes?q=intitle:";
   const [items, setItems] = useState([]);
   let { key } = useParams();
-  useEffect(() => {
+  useEffect((key) => {
     fetch(`${GOOGLE_BOOKS_API}${key}`)
       .then((response) => response.json())
       .then((object) => {
@@ -20,8 +20,8 @@ function Search() {
       <div className="md: grid grid-cols-1 md:grid-cols-2">
         {items.map((e, i) => {
           return (
-            <div key={i} className="mt-7">
-              <div className="flex">
+            <div className="mt-7">
+              <div key={i} className="flex">
                 <img
                   className="w-20"
                   src={e?.volumeInfo?.imageLinks?.smallThumbnail}
