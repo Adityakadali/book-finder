@@ -11,7 +11,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Hero />} />
-            <Route path="/explore" element={<Explore />} />
+            <Route path="explore" element={<Explore />} />
             <Route path="search/:key" element={<Search />} />
           </Routes>
         </BrowserRouter>
