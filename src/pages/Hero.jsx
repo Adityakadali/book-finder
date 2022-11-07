@@ -7,9 +7,12 @@ function Hero() {
         <h2 className="font-['Space_Grotesk'] text-5xl text-slate-700">
           Find your next book to read.
         </h2>
-        <button className="max-w-max bg-teal-500 px-4 py-2 text-xl font-bold text-teal-50">
+        <a
+          href="/explore"
+          className="max-w-max bg-teal-500 px-4 py-2 text-xl font-bold text-teal-50"
+        >
           Explore
-        </button>
+        </a>
       </div>
       <img
         src={heroImage}
