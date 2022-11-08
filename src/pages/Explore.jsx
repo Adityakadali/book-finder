@@ -56,7 +56,7 @@ function Explore() {
         {data.map((e, i) => {
           const { title, image_url } = e;
           return (
-            <div className="px-4">
+            <article className="px-4">
               <img
                 className="mx-auto mt-4 h-60"
                 key={i}
@@ -65,7 +65,7 @@ function Explore() {
               />
 
               <h2 className="mt-4 text-center font-bold">{title}</h2>
-            </div>
+            </article>
           );
         })}
       </Slider>
