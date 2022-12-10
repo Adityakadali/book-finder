@@ -17,7 +17,7 @@ function Search() {
   return (
     <div className="py-10">
       <h1 className="text-xl font-bold">Showing results for {key}</h1>
-      <div className="md: grid grid-cols-1 md:grid-cols-2">
+      <div className="grid-cols-1 md:grid md:grid-cols-2">
         {items.map((e, i) => {
           return (
             <div key={i} className=" mt-6 flex">
@@ -27,7 +27,7 @@ function Search() {
                 alt={e?.volumeInfo?.title}
               />
               <div className="px-7 py-4">
-                <h1 className="text-lg font-bold">{e?.volumeInfo?.title}</h1>
+                <h2 className="text-lg font-bold">{e?.volumeInfo?.title}</h2>
                 <p className="mt-2">
                   <span className="font-bold">Author: </span>
                   {e?.volumeInfo?.authors}

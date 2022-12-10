@@ -9,7 +9,7 @@ function Hero() {
         </h2>
         <a
           href="/explore"
-          className="max-w-max bg-teal-500 px-4 py-2 text-xl font-bold text-teal-50"
+          className="mt-4 max-w-max bg-teal-500 px-4 py-2 text-xl font-bold text-teal-50"
         >
           Explore
         </a>
