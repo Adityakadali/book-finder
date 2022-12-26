@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 function Nav() {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search/${search}`);
+  };
 
   return (
     <header>
@@ -14,19 +19,23 @@ function Nav() {
             BookFinder
           </h1>
         </NavLink>
-        <div className="flex items-center gap-2">
+        <form
+          method="get"
+          className="flex items-center gap-2"
+          onSubmit={handleSubmit}
+        >
           <input
-            className="rounded-sm border border-slate-600 bg-inherit px-4 py-2 outline-2 outline-slate-500 focus:bg-white"
-            type="text"
+            className="rounded-sm bg-inherit py-2 px-3 ring-2 ring-teal-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-900"
+            type="search"
             onChange={(e) => setSearch(e.target.value)}
           />
-          <NavLink
-            to={`/search/${search}`}
+          <button
+            type="submit"
             className="rounded-sm bg-teal-500 px-4 py-2 font-semibold text-slate-50"
           >
             Search
-          </NavLink>
-        </div>
+          </button>
+        </form>
       </nav>
     </header>
   );
