@@ -3,7 +3,7 @@ import Hero from "./pages/Hero";
 import Explore from "./pages/Explore";
 import { Route, Routes } from "react-router-dom";
 import Search from "./pages/Search";
-import Footer from "./pages/Footer";
+import Footer from "./components/Footer";
 function App() {
   return (
     <>
