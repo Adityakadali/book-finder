@@ -2,12 +2,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function Search() {
-  const GOOGLE_BOOKS_API =
-    "https://www.googleapis.com/books/v1/volumes?q=intitle:";
-  const [items, setItems] = useState([]);
   let { key } = useParams();
+  const FEILDS =
+    "kind,totalItems,items(id,selfLink,volumeInfo(title,authors,description,pageCount,averageRating,imageLinks))";
+  const MAX_RESULTS = 20;
+  const GOOGLE_BOOKS_API =
+    "https://www.googleapis.com/books/v1/volumes?" +
+    new URLSearchParams({
+      q: key,
+      fields: FEILDS,
+      maxResults: MAX_RESULTS,
+    });
+  const [items, setItems] = useState([]);
+
   useEffect(() => {
-    fetch(`${GOOGLE_BOOKS_API}${key}`)
+    fetch(`${GOOGLE_BOOKS_API}`)
       .then((response) => response.json())
       .then((object) => {
         setItems(object.items);
@@ -20,10 +29,13 @@ function Search() {
       <div className="grid-cols-1 md:grid md:grid-cols-2">
         {items.map((e, i) => {
           return (
-            <div key={i} className=" mt-6 flex">
+            <div key={i} className=" mt-6 flex" to={e.id}>
               <img
-                className="w-20"
-                src={e?.volumeInfo?.imageLinks?.smallThumbnail}
+                className="w-20 object-cover"
+                src={e?.volumeInfo?.imageLinks?.smallThumbnail.replace(
+                  /&edge=curl/gi,
+                  ""
+                )}
                 alt={e?.volumeInfo?.title}
               />
               <div className="px-7 py-4">
